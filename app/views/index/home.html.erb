@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="jumbotron">
+  <h1 class="text-center">Wilkommen !</h1>
+  </div>
+
+
+  <div class="row-fluid marketing">
+    <div class="col-xs-1 center-block">
+      <div class="card-columns">
+      <% @gossips.each do |gossip| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= gossip.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= gossip.user.first_name + ' ' + gossip.user.last_name %></h6>
+            <p class="card-text"><%= gossip.content %></p>
+            <a href="#" class="card-link">Card link</a>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

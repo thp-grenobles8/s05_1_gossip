@@ -1,0 +1,13 @@
+<div class="jumbotron vertical-center"
+<div class="container">
+<div class="row">
+<div class="page-hero d-flex align-items-center justify-content-center">
+
+<%= @gossip.title %><br><br>
+
+<%= link_to @gossip.user.first_name + ' ' + @gossip.user.last_name, user_path(@gossip.user.id) %><br>
+<%= @gossip.content %>
+</div>
+</div>
+</div>
+</div>
