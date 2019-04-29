@@ -1,1 +1,38 @@
-<h1>User <%= @user.first_name %></h1>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<br><br>
+<div class="container">
+    <div class="span3 well">
+        <center>
+        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"></a>
+        <h3><%= @user.first_name + ' ' + @user.last_name %></h3>
+        <em><%= @user.description %></em>
+		</center>
+    </div>
+</div>
+
+<div class="container">
+  <div class="span3 well">
+    <center><h3>Tout les gossips de <%= @user.first_name %></h3></center>
+    <br><br>
+
+    <% @user.gossips.each do |gossip| %>
+      <div class="card">
+        <div class="card-header">
+          <%= gossip.title %>
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p> <%= gossip.content %> </p>
+          </blockquote>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+  </div>
+</div>

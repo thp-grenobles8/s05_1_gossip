@@ -1,13 +1,17 @@
-<div class="jumbotron vertical-center"
-<div class="container">
-<div class="row">
-<div class="page-hero d-flex align-items-center justify-content-center">
-
-<%= @gossip.title %><br><br>
-
-<%= link_to @gossip.user.first_name + ' ' + @gossip.user.last_name, user_path(@gossip.user.id) %><br>
-<%= @gossip.content %>
-</div>
+<!-- google : how to verticaly center div bootstrap -->
+<br><br><br><br><br> <!-- me -->
+<div class="container theme-showcase" role="main">
+<div class="jumbotron">
+<div class="card">
+  <div class="card-header">
+    <%= @gossip.title %><br>  
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= @gossip.content %></p>
+    <footer class="blockquote-footer"><%= link_to @gossip.user.first_name + ' ' + @gossip.user.last_name, user_path(@gossip.user.id) %></footer>
+    </blockquote>
+  </div>
 </div>
 </div>
 </div>

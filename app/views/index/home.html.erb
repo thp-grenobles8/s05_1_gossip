@@ -1,23 +1,32 @@
+<div class="parallax">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Willkommen ! (っ◕‿◕)っ</h1>
+      <p>Un endroit où clavarder (ou pas) et commèrer (non plus).</p>
+      <p>ASCII Art de <%= link_to 'Asky', "https://asky.io/" %></p><br>
+      <p><a href="#gossips" class="btn btn-primary btn-lg">LULZ PLZ</a></p>
+    </div>
+  </div>
+</div>
 
 <div class="container">
-  <div class="jumbotron">
-  <h1 class="text-center">Wilkommen !</h1>
-  </div>
-
-
-  <div class="row-fluid marketing">
+  <div class="row-fluid marketing" id="gossips">
     <div class="col-xs-1 center-block">
       <div class="card-columns">
       <% @gossips.each do |gossip| %>
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%= gossip.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= gossip.user.first_name + ' ' + gossip.user.last_name %></h6>
-            <p class="card-text"><%= gossip.content %></p>
-            <a href="#" class="card-link">Card link</a>
+
+        <div class="animated wow fadeIn slow">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= gossip.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= link_to gossip.user.first_name + ' ' + gossip.user.last_name, user_path(gossip.user.id) %></h6>
+              <p class="card-text"><%= gossip.content[0..50].gsub(/\s\w+\s*$/, ' ...') %></p>
+              <%= link_to "plus", gossip_path(gossip.id - 1), :class => "btn btn-secondary" %>   
+            </div>
           </div>
         </div>
       <% end %>
+
       </div>
     </div>
   </div>
