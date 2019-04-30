@@ -1,0 +1,24 @@
+<%= form_tag url_for(action: 'create'), method: 'post' do %>
+
+    <%= label_tag 'Titre' %>
+    <%= text_field_tag 'title' %>
+    <br>
+
+    <%= label_tag 'Contenu' %>
+    <%= text_field_tag 'content' %>
+    <br>
+
+      <input type="hidden" name="user_id" value=<%= User.find_by(first_name: 'anonymous').id %> >
+
+    <%= submit_tag "Créer un gossip" %>
+
+    <% if @gossip.errors.any? %>
+      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+          <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+<% end %>
