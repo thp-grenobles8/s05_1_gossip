@@ -11,3 +11,6 @@ Trucs-ki-rende-séxi :
 * Asky : https://asky.io/
 
 # MAKE ASCII ART GREAT AGAIN !
+
+
+PHP c'est VRAIMENT(!!!) de la merde ? 30 min sur un 403 ERROR, le soucis vient du fait que j'ai pris la  solution cheap : PHP/MySQL. Que du fun
