@@ -7,11 +7,13 @@
 <br><br>
 <div class="container">
     <div class="span3 well">
-        <center>
+      <center>
         <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"></a>
-        <h3><%= @user.first_name + ' ' + @user.last_name %></h3>
+        <h3><%= @user.first_name + ' ' + @user.last_name%></h3>
+        <h4><%= @user.age.to_s + ' ans, '%><%= link_to @user.city.name, city_path(@user.city.id) %></h5>
+        <h4><%= @user.email %></h5><br>
         <em><%= @user.description %></em>
-		</center>
+		  </center>
     </div>
 </div>
 

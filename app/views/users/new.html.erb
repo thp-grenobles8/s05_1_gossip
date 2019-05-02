@@ -1,0 +1,66 @@
+<br><br><br><br>
+<div class="container">
+  <div class="jumbotron">
+    <%= form_tag url_for(model: 'users', action:'create'), method: 'post' do%>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Prénom</span>
+      </div>
+      <%= text_field_tag 'first_name', nil, :placeholder => 'ex: José' %>
+    </div>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Nom</span>
+      </div>
+      <%= text_field_tag 'last_name', nil, :placeholder => 'ex: Bové' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Description</span>
+      </div>
+      <%= text_field_tag 'description', nil, :placeholder => 'ex: Je suis gentil' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+      </div>
+      <%= text_field_tag 'email', nil, :placeholder => 'ex: jose.bove@domain.fr' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Age</span>
+      </div>
+      <%= text_field_tag 'age', nil, :placeholder => 'ex: 42' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Ville</span>
+      </div>
+      <%= text_field_tag 'city', nil, :placeholder => 'ex: Gre' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Mot de passe</span>
+      </div>
+      <%= password_field_tag 'password' %>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Confirmation</span>
+      </div>
+      <%= password_field_tag 'password_confirmation' %>
+    </div>
+
+    <%= submit_tag "S'inscrire" %>
+
+  </div>
+</div>
+<% end %>

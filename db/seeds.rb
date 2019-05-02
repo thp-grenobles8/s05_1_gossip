@@ -63,6 +63,7 @@ print 'create User'
     email: Faker::Internet.email,
     age: rand(20..40),
     city: City.all.sample
+    password_digest: "0xLOL"
   )
 end
 puts " ✔"

@@ -21,7 +21,7 @@
               <h5 class="card-title"><%= gossip.title %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= link_to gossip.user.first_name + ' ' + gossip.user.last_name, user_path(gossip.user.id) %></h6>
               <p class="card-text"><%= gossip.content[0..50].gsub(/\s\w+\s*$/, ' ...') %></p>
-              <%= link_to "plus", gossip_path(gossip.id - 1), :class => "btn btn-secondary" %>   
+              <%= link_to "plus", gossip_path(gossip.id), :class => "btn btn-secondary" %>   
             </div>
           </div>
         </div>

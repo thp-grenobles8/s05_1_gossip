@@ -9,8 +9,47 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p><%= @gossip.content %></p>
-    <footer class="blockquote-footer"><%= link_to @gossip.user.first_name + ' ' + @gossip.user.last_name, user_path(@gossip.user.id) %></footer>
+    <footer class="blockquote-footer"><%= link_to @gossip.user.first_name + ' ' + @gossip.user.last_name, user_path(@gossip.user.id) %>, from <i><%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %></i></footer>
+
     </blockquote>
+
+    <br><br>
+    <div class="container">
+
+      <% @gossip.comments.each do |comment| %>
+        <div class="card w-75">
+          <div class="card-body">
+            <h5 class="card-title"><%= comment.author.first_name %></h5>
+            <p class="card-text"><%= comment.content %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <%= form_tag url_for(controller: 'comments', action: 'create', id: @gossip.id, gossip_id: params[:id]), method: 'post' do %>
+
+      <%= label_tag 'Commentaire :' %>
+      <%= text_field_tag 'content' %>
+      <br>
+
+      <input type="hidden" name="author_id" value=<%= User.find_by(first_name: 'anonymous').id %> >
+      <input type="hidden" name="gossip_id" value=<%= @gossip.id %> >
+
+      <%= submit_tag "Ajouter un commentaire" %>
+
+      <% end %>
+    </div>
+
+
+    <br>
+    <%= link_to 'Éditer', edit_gossip_path(@gossip.id), :class => "btn btn-primary" %>
+    <p><a
+      class="btn btn-secondary"
+      href="<%=gossip_path(@gossip.id)%>"
+      rel="nofollow"
+      data-method="delete"
+      data-confirm="Es-tu sûr de vouloir supprimer le potin?"
+      role="button">Supprimer
+    </a></p>
   </div>
 </div>
 </div>

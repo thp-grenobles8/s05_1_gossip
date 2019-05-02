@@ -1,0 +1,42 @@
+<!-- google : how to verticaly center div bootstrap -->
+<br><br><br><br><br> <!-- me -->
+<div class="container theme-showcase" role="main">
+<div class="jumbotron">
+<div class="card">
+  <div class="card-header">
+    <%= @updated_gossip.title %><br>  
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= @updated_gossip.content %></p>
+    <footer class="blockquote-footer"><%= link_to @updated_gossip.user.first_name + ' ' + @updated_gossip.user.last_name, user_path(@updated_gossip.user.id) %>, from <i><%= link_to @updated_gossip.user.city.name, city_path(@updated_gossip.user.city.id) %></i></footer>
+    </blockquote>
+  </div>
+</div>
+</div>
+</div>
+
+<%= form_tag url_for(action: 'update'), method: 'patch' do %>
+
+    <%= label_tag 'Titre' %>
+    <%= text_field_tag 'title' %>
+    <br>
+
+    <%= label_tag 'Contenu' %>
+    <%= text_field_tag 'content' %>
+    <br>
+
+      <input type="hidden" name="user_id" value=<%= User.find_by(first_name: 'anonymous').id %> >
+
+    <%= submit_tag "Éditer le gossip" %>
+
+    <% if @updated_gossip.errors.any? %>
+      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+          <% @updated_gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+           <% end %>
+        </ul>
+    <% end %>
+
+<% end %>
