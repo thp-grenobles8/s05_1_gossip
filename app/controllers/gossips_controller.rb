@@ -14,7 +14,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new(
       title:   params[:title],
       content: params[:content],
-      user_id: params[:user_id])
+      user_id: current_user.id)
 
     if @gossip.save
       redirect_to :root
@@ -34,12 +34,13 @@ class GossipsController < ApplicationController
     if @updated_gossip.update(
         title: params[:title],
         content: params[:content],
-        user_id: User.find_by(first_name: 'anonymous').id
+        user_id: current_user.id
       )
-      flash[:update_warning] = "Potin updated !"
-      redirect_to @updated_gossip
+      flash[:success] = "Potin updated !"
+      redirect_back(fallback_location: root_path)
+
     else
-      flash[:update_warning] = "Error :( (error => #{@updated_gossip.errors.full_messages})"
+      flash[:error] = "Error :( (error => #{@updated_gossip.errors.full_messages})"
       redirect_to @updated_gossip
     end
   end
@@ -47,7 +48,7 @@ class GossipsController < ApplicationController
   def destroy
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
-    flash[:warning_delete] = "Potin supprimé"
+    flash[:success] = "Potin supprimé"
     redirect_to :root
   end
 
@@ -56,7 +57,7 @@ class GossipsController < ApplicationController
 
   def authenticate_user
     unless logged_in?
-      flash[:danger] = "Connecte toi s'il te plaît"
+      flash[:error] = "Connecte toi s'il te plaît"
       redirect_to new_session_path
     end
   end

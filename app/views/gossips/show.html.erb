@@ -24,32 +24,45 @@
           </div>
         </div>
       <% end %>
+      
 
-      <%= form_tag url_for(controller: 'comments', action: 'create', id: @gossip.id, gossip_id: params[:id]), method: 'post' do %>
 
-      <%= label_tag 'Commentaire :' %>
-      <%= text_field_tag 'content' %>
+      <% if logged_in? %>
+
+        <%= form_tag url_for(controller: 'comments', action: 'create', id: @gossip.id, gossip_id: params[:id]), method: 'post' do %>
+
+        <%= label_tag 'Commentaire :' %>
+        <%= text_field_tag 'content' %>
+        <br>
+
+        <input type="hidden" name="author_id" value=<%= current_user %> >
+        <input type="hidden" name="gossip_id" value=<%= @gossip.id %> >
+
+        <%= submit_tag "Ajouter un commentaire" %>
+
+        <% end %>
+      </div>
+
+
       <br>
+      
+      <% if current_user.present? %>
+        <%= link_to 'Éditer', edit_gossip_path(@gossip.id), :class => "btn btn-primary" %>
+      <p><a
+        class="btn btn-secondary"
+        href="<%=gossip_path(@gossip.id)%>"
+        rel="nofollow"
+        data-method="delete"
+        data-confirm="Es-tu sûr de vouloir supprimer le potin?"
+        role="button">Supprimer
+      </a></p>
 
-      <input type="hidden" name="author_id" value=<%= User.find_by(first_name: 'anonymous').id %> >
-      <input type="hidden" name="gossip_id" value=<%= @gossip.id %> >
-
-      <%= submit_tag "Ajouter un commentaire" %>
-
+      <!-- <%= link_to 'Plussoyer', like_gossip_path%> 1H que je bloque (oublié le "as:" dans routes.rb), il est 2H ce sera pour demain :( -->
       <% end %>
-    </div>
 
 
-    <br>
-    <%= link_to 'Éditer', edit_gossip_path(@gossip.id), :class => "btn btn-primary" %>
-    <p><a
-      class="btn btn-secondary"
-      href="<%=gossip_path(@gossip.id)%>"
-      rel="nofollow"
-      data-method="delete"
-      data-confirm="Es-tu sûr de vouloir supprimer le potin?"
-      role="button">Supprimer
-    </a></p>
+
+    <% end %>
   </div>
 </div>
 </div>

@@ -4,15 +4,21 @@
       <h1 class="display-3">Willkommen ! (っ◕‿◕)っ</h1>
       <p>Un endroit où clavarder (ou pas) et commèrer (non plus).</p>
       <p>ASCII Art de <%= link_to 'Asky', "https://asky.io/" %></p><br>
-      <p><a href="#gossips" class="btn btn-primary btn-lg">LULZ PLZ</a></p>
+
+          <% if logged_in? %>
+            <a href="<%= new_gossip_path %>" class="btn btn-lg btn-outline-info btn-block">Nouveau gossip</a>
+            <br>
+          <% end %>
+
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row-fluid marketing" id="gossips">
-    <div class="col-xs-1 center-block">
-      <div class="card-columns">
+      <div class="col-xs-1 center-block">
+        <div class="card-columns">
+
       <% @gossips.each do |gossip| %>
 
         <div class="animated wow fadeIn slow">

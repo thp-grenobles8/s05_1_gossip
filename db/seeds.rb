@@ -15,33 +15,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # remise à zéro des tables
-print "clear User:"
-User.destroy_all
-puts " ✔"
-print "clear City:"
-City.destroy_all
-puts " ✔"
-print "clear Tag:"
-Tag.destroy_all
-puts " ✔"
-print "clear JoinTableGossipTagable:"
-JoinTableGossipTag.destroy_all
-puts " ✔"
-print "clear Gossip:"
-Gossip.destroy_all
-puts " ✔"
-print "clear PrivateMessage:"
-PrivateMessage.destroy_all
-puts " ✔"
-print "clear JoinTablePrivateMessageUser:"
-JoinTablePrivateMessageUser.destroy_all
-puts " ✔"
-print "clear Comment:"
-Comment.destroy_all
-puts " ✔"
-print "clear Like:"
-Like.destroy_all
-puts " ✔ \n\n"
+# print "clear User:"
+# User.destroy_all
+# puts " ✔"
+# print "clear City:"
+# City.destroy_all
+# puts " ✔"
+# print "clear Tag:"
+# Tag.destroy_all
+# puts " ✔"
+# print "clear JoinTableGossipTagable:"
+# JoinTableGossipTag.destroy_all
+# puts " ✔"
+# print "clear Gossip:"
+# Gossip.destroy_all
+# puts " ✔"
+# print "clear PrivateMessage:"
+# PrivateMessage.destroy_all
+# puts " ✔"
+# print "clear JoinTablePrivateMessageUser:"
+# JoinTablePrivateMessageUser.destroy_all
+# puts " ✔"
+# print "clear Comment:"
+# Comment.destroy_all
+# puts " ✔"
+# print "clear Like:"
+# Like.destroy_all
+# puts " ✔ \n\n"
 
 
 # création des tables
@@ -62,7 +62,7 @@ print 'create User'
     description: Faker::Lorem.words(30).join(" ").capitalize,
     email: Faker::Internet.email,
     age: rand(20..40),
-    city: City.all.sample
+    city: City.all.sample,
     password_digest: "0xLOL"
   )
 end

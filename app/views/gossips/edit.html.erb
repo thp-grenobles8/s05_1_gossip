@@ -26,7 +26,6 @@
     <%= text_field_tag 'content' %>
     <br>
 
-      <input type="hidden" name="user_id" value=<%= User.find_by(first_name: 'anonymous').id %> >
 
     <%= submit_tag "Éditer le gossip" %>
 

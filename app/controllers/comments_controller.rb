@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       )
 
       if @comment.save
-        redirect_to :root
+        redirect_back(fallback_location: root_path)
         flash[:success] = "Commentaire ajouté !"
       else
         flash[:danger] = "Error :("

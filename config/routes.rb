@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/contact', to: 'static#contact'
   get '/login', to: 'static#login'
 
+  post '/like:id', to: 'like#create', as: 'like_gossip'
+
   # get '/gossip/:id', to: 'gossip#get_id'
   # get '/user/:id', to: 'user#get_id', as: 'user'
   # get '/gossip/:id', to: 'gossip#get_id', as: 'gossip'
