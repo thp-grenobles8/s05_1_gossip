@@ -12,6 +12,6 @@ module SessionsHelper
   end
 
   def is_owner?(gossip)
-    true if gossip.user == current_user
+    gossip.user.id === current_user.id
   end
 end

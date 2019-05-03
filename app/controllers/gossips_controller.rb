@@ -1,6 +1,6 @@
 class GossipsController < ApplicationController
-  before_action :authenticate_user, only: [:new]
-  before_action :gossip_author, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user, only: [:new, :create]
+  before_action :gossip_author, only: [:edit, :update, :destroy]
 
   def show
     @gossip = Gossip.find(params[:id])
@@ -69,7 +69,7 @@ class GossipsController < ApplicationController
 
   def gossip_author
     @gossip = Gossip.find(params[:id])
-    unless current_user == @gossip.user_id
+    unless current_user.id == @gossip.user_id
       flash[:danger] = "Ce gossip ne t'appartient pas !"
       redirect_to :root
     end
