@@ -42,20 +42,18 @@
 
         <% end %>
       </div>
-
-
       <br>
-      <%= current_user.id %>
-      <%= @gossip.user.id %>
       
-      <% if is_owner?(@gossip) %>
-        <%= link_to 'Éditer', edit_gossip_path(@gossip.id), :class => "btn btn-primary" %>
+          <% if is_owner?(@gossip) %>
+            <%= link_to 'Éditer', edit_gossip_path(@gossip.id), :class => "btn btn-primary" %>
 
-        <%= link_to 'Supprimer', gossip_path(@gossip.id),
-          :method => 'delete', :class => "btn btn-secondary", :confirm => "Sûr ?" %>
+            <%= link_to 'Supprimer', gossip_path(@gossip.id),
+              :method => 'delete', :class => "btn btn-secondary", :confirm => "Sûr ?" %>
+          <% end %>
 
-      <!-- <%= link_to 'Plussoyer', like_gossip_path%> 1H que je bloque (oublié le "as:" dans routes.rb), il est 2H ce sera pour demain :( -->
-      <% end %>
+      
+      <%= link_to 'Plussoyer', like_gossip_path(@gossip.id), :method => 'post', :gossip_id => @gossip.id, :comment_id => @gossip.comments.id %>
+
 
 
 
