@@ -1,6 +1,9 @@
 class GossipsController < ApplicationController
-  before_action :authenticate_user, only: [:index]
-  
+  before_action :authenticate_user, only: [:new]
+  before_action :gossip_author, only: [:create, :edit, :update, :destroy]
+  # before_action :
+  # before :index ?
+
   def show
     @gossip = Gossip.find(params[:id])
     @comments = Comment.find_by(gossip_id: params[:id])
@@ -40,7 +43,7 @@ class GossipsController < ApplicationController
       redirect_back(fallback_location: root_path)
 
     else
-      flash[:error] = "Error :( (error => #{@updated_gossip.errors.full_messages})"
+      flash[:danger] = "Error :( (error => #{@updated_gossip.errors.full_messages})"
       redirect_to @updated_gossip
     end
   end
@@ -57,8 +60,16 @@ class GossipsController < ApplicationController
 
   def authenticate_user
     unless logged_in?
-      flash[:error] = "Connecte toi s'il te plaît"
+      flash[:danger] = "Connecte toi s'il te plaît"
       redirect_to new_session_path
+    end
+  end
+
+  def gossip_author
+    @gossip = Gossip.find(params[:id])
+    unless current_user == @gossip.user_id
+      flash[:danger] = "Ce gossip ne t'appartient pas !"
+      redirect_to root_path
     end
   end
 

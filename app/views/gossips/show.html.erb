@@ -50,7 +50,7 @@
         <%= link_to 'Éditer', edit_gossip_path(@gossip.id), :class => "btn btn-primary" %>
       <p><a
         class="btn btn-secondary"
-        href="<%=gossip_path(@gossip.id)%>"
+        href="<%= gossip_path(@gossip.id) %>"
         rel="nofollow"
         data-method="delete"
         data-confirm="Es-tu sûr de vouloir supprimer le potin?"
