@@ -10,4 +10,8 @@ module SessionsHelper
   def logged_in?
     true unless session[:user_id].nil?
   end
+
+  def is_owner?(gossip)
+    true if gossip.user == current_user
+  end
 end
