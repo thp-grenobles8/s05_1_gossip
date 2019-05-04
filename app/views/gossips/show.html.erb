@@ -51,8 +51,26 @@
               :method => 'delete', :class => "btn btn-secondary", :confirm => "Sûr ?" %>
           <% end %>
 
-      
-      <%= link_to 'Plussoyer', like_gossip_path(@gossip.id), :method => 'post', :gossip_id => @gossip.id, :comment_id => @gossip.comments.id %>
+
+          <% if @gossip.liking_users.include?(current_user) %>
+                <%= link_to 'Moinsoyer', gossip_like_path(@gossip.id, @gossip.likes.find_by(user_id: current_user.id)), :method => 'delete' %>
+
+          <% else %>
+                <%= link_to 'Plussoyer', gossip_likes_path(@gossip.id), :method => 'post' %>
+
+          <% end %>
+                <%= @gossip.likes.count %>
+
+     <!-- TESTED :
+            data: { :gossip_id => @gossip.id }
+            :gossip_id => @gossip_id 
+            gossip_id: @gossip.id
+            gossip_id: "lol"
+            gossip: @gossip.id
+            gossip: @gossip
+            :gossip => @gossip
+            :gossip => @gossip.id
+      -->
 
 
 

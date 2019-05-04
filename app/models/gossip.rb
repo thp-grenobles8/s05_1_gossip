@@ -8,4 +8,5 @@ class Gossip < ApplicationRecord
   has_many :tags, through: :join_table_gossip_tags
   has_many :comments
   has_many :likes
+  has_many :liking_users, through: :likes, source: :user
 end
