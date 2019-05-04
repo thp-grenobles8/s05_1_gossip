@@ -53,7 +53,7 @@
 
 
           <% if @gossip.liking_users.include?(current_user) %>
-                <%= link_to 'Moinsoyer', gossip_like_path(@gossip.id, @gossip.likes.find_by(user_id: current_user.id)), :method => 'delete' %>
+                <%= link_to 'Moinsoyer', gossip_like_path(@gossip.id, user_like(@gossip, current_user)), :method => 'delete' %>
 
           <% else %>
                 <%= link_to 'Plussoyer', gossip_likes_path(@gossip.id), :method => 'post' %>

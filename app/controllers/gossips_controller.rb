@@ -57,7 +57,7 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     true if @gossip.user == current_user 
   end
-
+  
   private
 
   def authenticate_user

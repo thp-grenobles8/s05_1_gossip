@@ -1,8 +1,6 @@
 class LikesController < ApplicationController
 
   def create
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-    puts params
     @like = Like.create!(
       user_id:    current_user.id,
       gossip_id:  params[:gossip_id]
