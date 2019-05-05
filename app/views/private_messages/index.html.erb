@@ -1,0 +1,5 @@
+<h1>Tous les messages</h1>
+
+<% @private_messages.map do |message| %>
+  <%= message.content %><br>
+<% end %>

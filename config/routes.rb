@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
   resources :sessions, only: [:new, :create, :destroy]
+  resources :private_messages, only: [:index, :show, :new, :create]
 end

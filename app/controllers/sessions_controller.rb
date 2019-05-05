@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def show
+    @private_message = PrivateMessage.find(params[:id])
+  end
+
   def destroy
     session.clear
     redirect_to :root

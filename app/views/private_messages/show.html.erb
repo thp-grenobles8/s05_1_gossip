@@ -1,0 +1,5 @@
+<h1>Message privé</h1>
+
+<%= @private_message.content %>
+<p>À: <%= recipient_info(@private_message) %></p>
+<p>De: <%= sender_info(@private_message) %></p>
