@@ -11,7 +11,6 @@ class PrivateMessagesController < ApplicationController
   end
   
   def new
-    @private_message = PrivateMessage.new
   end
 
   def create

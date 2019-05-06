@@ -2,7 +2,32 @@
   <div class="container">
     <h1 class="display-3">Connexion</h1>
   </div>
-  <div class="container">
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <!-- <%= form_for url_for(action: 'create'), method: "post" do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
+
+      <%= f.submit "sessionswxc", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", new_session_path %></p>
+  </div>
+</div>
+</div>-->
+
+
+ <div class="container">
     <div class="form">
     <%= form_tag url_for(action: 'create'), method: "post" do %>
       <div class="form-item">
@@ -13,9 +38,15 @@
         <%= label_tag 'Mot de passe' %>
         <%= password_field_tag 'password' %>
       </div>
+        <input type="checkbox" name="remember_me">
+        <label for="remember_me">Se souvenir de moi ?</label><br/>
+
+
       <div class="form-item">
         <%= submit_tag "Connexion" %>
       </div>
     <% end %>
+
+    
   </div>
 </div>
